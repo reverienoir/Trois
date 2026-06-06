@@ -8,7 +8,9 @@
 - `location: Coordinate`（現在地の緯度経度）
 - `walkMinutes: Int`（徒歩何分以内か。例: 5 / 10 / 15）
 - `budget: BudgetRange?`（予算上限。未指定可）
-- `genres: [Genre]`（ジャンル / 気分。複数可、未指定可）
+- `moods: [Mood]`（気分。例: `.tired` `.wantEnergy` `.healthy` 複数可、未指定可）
+- `scene: Scene?`（シーン。例: `.alone` `.withColleagues` `.date` `.family` 未指定可）
+- `genres: [Genre]`（ジャンル。絞りたい人向けの補助入力。複数可、未指定可）
 - （v2）`mealTime: MealTime?` … `.morning / .noon / .night`
 
 ### Coordinate
@@ -38,7 +40,9 @@
 ## 列挙・補助型（例）
 
 - `BudgetRange`: `.under1000 / .under2000 / .under3000 / .noLimit`
-- `Genre`: `.chinese / .light / .hearty / .japanese / .cafe …`（APIのジャンルコードへマッピング）
+- `Mood`: `.tired / .wantEnergy / .healthy / .hearty / .light / .splurge / .adventurous / .playItSafe`
+- `Scene`: `.alone / .withColleagues / .date / .family`
+- `Genre`: `.ramen / .yakiniku / .curry / .sobaUdon / .izakaya / .fastFood / .japanese / .chinese / .cafe …`（APIのジャンルコードへマッピング）
 - `MealTime`（v2）: `.morning / .noon / .night`
 
 ---
