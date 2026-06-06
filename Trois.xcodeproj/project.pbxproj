@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		12B4422947E7A493C4BF6E50 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139847F1FEF846C076507BB5 /* Components.swift */; };
+		1BFDE8EB1CD045C249C955F4 /* GeocodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E3A070F9D38F0B2F7DC9F2 /* GeocodingService.swift */; };
+		292D6943528DA04FF6D4EB5C /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27078E34FC9D90E1C50A092F /* WeatherService.swift */; };
+		4F61C2BB05BB0E44FD1923E7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C29FD6E9A06B063E879107 /* LoadingView.swift */; };
+		54BBEC919B26B10B72C57996 /* RecommendationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A5D614413FD7D73D185455 /* RecommendationService.swift */; };
+		A102F6A00E64D0D5D2A18512 /* ClaudeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3236CDAEC99FB33AD0F4000 /* ClaudeService.swift */; };
+		A7ECD75D151DB6B78990D04E /* TroisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537BECAB4B1BEBB203516DA6 /* TroisApp.swift */; };
+		AEE5C5DD7C3F7AB461F4E269 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF5D4C2B49689CC9DC3C212 /* ResultView.swift */; };
+		B3BB1643A2349B0AEA175BFB /* HotpepperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F8C3E26FD0736FB0FFAA2 /* HotpepperService.swift */; };
+		DC75A22FCE2ACD9FA24B0ABF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63675A25BAC3CDEC80EA000 /* LocationManager.swift */; };
+		DD327CC575ACE8870471B1CC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932942FDEB78D14C2E8A4C /* Models.swift */; };
+		FAB2805BC3A4529120A2899D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CE9935133FC09C153F9E70 /* HomeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1120A8BA6A91A5509B09D336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		139847F1FEF846C076507BB5 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		25F3C37E7CA9422773437137 /* Trois.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Trois.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27078E34FC9D90E1C50A092F /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		32932942FDEB78D14C2E8A4C /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		32E3A070F9D38F0B2F7DC9F2 /* GeocodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingService.swift; sourceTree = "<group>"; };
+		3CFA8BCC72F529BDE0510F5E /* APIKeys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKeys.xcconfig; sourceTree = "<group>"; };
+		537BECAB4B1BEBB203516DA6 /* TroisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroisApp.swift; sourceTree = "<group>"; };
+		89A5D614413FD7D73D185455 /* RecommendationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationService.swift; sourceTree = "<group>"; };
+		A11F8C3E26FD0736FB0FFAA2 /* HotpepperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotpepperService.swift; sourceTree = "<group>"; };
+		AEF5D4C2B49689CC9DC3C212 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		B3236CDAEC99FB33AD0F4000 /* ClaudeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeService.swift; sourceTree = "<group>"; };
+		B63675A25BAC3CDEC80EA000 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E9C29FD6E9A06B063E879107 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		F2CE9935133FC09C153F9E70 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		03AE90FA67AE14F33F9492F3 = {
+			isa = PBXGroup;
+			children = (
+				3E67C9884F526EDAC3BBA300 /* Trois */,
+				84BE2264B546A17F7B1300CD /* Trois */,
+				3E426E805BE9237E007FDC17 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3E426E805BE9237E007FDC17 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25F3C37E7CA9422773437137 /* Trois.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E67C9884F526EDAC3BBA300 /* Trois */ = {
+			isa = PBXGroup;
+			children = (
+				1120A8BA6A91A5509B09D336 /* Info.plist */,
+				537BECAB4B1BEBB203516DA6 /* TroisApp.swift */,
+				EC49506527044609556B9A28 /* Models */,
+				D4D04D49EF5C9E4E5CF8C3A9 /* Services */,
+				A78AE2E520B495F86476E825 /* Views */,
+			);
+			path = Trois;
+			sourceTree = "<group>";
+		};
+		84BE2264B546A17F7B1300CD /* Trois */ = {
+			isa = PBXGroup;
+			children = (
+				3CFA8BCC72F529BDE0510F5E /* APIKeys.xcconfig */,
+			);
+			name = Trois;
+			path = .;
+			sourceTree = "<group>";
+		};
+		A78AE2E520B495F86476E825 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				139847F1FEF846C076507BB5 /* Components.swift */,
+				F2CE9935133FC09C153F9E70 /* HomeView.swift */,
+				E9C29FD6E9A06B063E879107 /* LoadingView.swift */,
+				AEF5D4C2B49689CC9DC3C212 /* ResultView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D4D04D49EF5C9E4E5CF8C3A9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B3236CDAEC99FB33AD0F4000 /* ClaudeService.swift */,
+				32E3A070F9D38F0B2F7DC9F2 /* GeocodingService.swift */,
+				A11F8C3E26FD0736FB0FFAA2 /* HotpepperService.swift */,
+				B63675A25BAC3CDEC80EA000 /* LocationManager.swift */,
+				89A5D614413FD7D73D185455 /* RecommendationService.swift */,
+				27078E34FC9D90E1C50A092F /* WeatherService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EC49506527044609556B9A28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32932942FDEB78D14C2E8A4C /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7826344ECA4ECBD549ADD1F1 /* Trois */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D91289AEFCDD17993EA8CD76 /* Build configuration list for PBXNativeTarget "Trois" */;
+			buildPhases = (
+				F7ED3DD730D2CD87F9586189 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trois;
+			packageProductDependencies = (
+			);
+			productName = Trois;
+			productReference = 25F3C37E7CA9422773437137 /* Trois.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4372B2DE9DDBB0557F9D3E4B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					7826344ECA4ECBD549ADD1F1 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 88E1E9386085D832E9BA571A /* Build configuration list for PBXProject "Trois" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 03AE90FA67AE14F33F9492F3;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3E426E805BE9237E007FDC17 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7826344ECA4ECBD549ADD1F1 /* Trois */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F7ED3DD730D2CD87F9586189 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A102F6A00E64D0D5D2A18512 /* ClaudeService.swift in Sources */,
+				12B4422947E7A493C4BF6E50 /* Components.swift in Sources */,
+				1BFDE8EB1CD045C249C955F4 /* GeocodingService.swift in Sources */,
+				FAB2805BC3A4529120A2899D /* HomeView.swift in Sources */,
+				B3BB1643A2349B0AEA175BFB /* HotpepperService.swift in Sources */,
+				4F61C2BB05BB0E44FD1923E7 /* LoadingView.swift in Sources */,
+				DC75A22FCE2ACD9FA24B0ABF /* LocationManager.swift in Sources */,
+				DD327CC575ACE8870471B1CC /* Models.swift in Sources */,
+				54BBEC919B26B10B72C57996 /* RecommendationService.swift in Sources */,
+				AEE5C5DD7C3F7AB461F4E269 /* ResultView.swift in Sources */,
+				A7ECD75D151DB6B78990D04E /* TroisApp.swift in Sources */,
+				292D6943528DA04FF6D4EB5C /* WeatherService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		125B67074FA328E3B06DDEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CFA8BCC72F529BDE0510F5E /* APIKeys.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Trois/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.eruru.Trois;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		58FF8487756D4BED1761DFE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		96E6BCDA69CEDF375770CC84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		CBF6F519A0DD3769BC891285 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CFA8BCC72F529BDE0510F5E /* APIKeys.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Trois/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.eruru.Trois;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88E1E9386085D832E9BA571A /* Build configuration list for PBXProject "Trois" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96E6BCDA69CEDF375770CC84 /* Debug */,
+				58FF8487756D4BED1761DFE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D91289AEFCDD17993EA8CD76 /* Build configuration list for PBXNativeTarget "Trois" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBF6F519A0DD3769BC891285 /* Debug */,
+				125B67074FA328E3B06DDEB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4372B2DE9DDBB0557F9D3E4B /* Project object */;
+}

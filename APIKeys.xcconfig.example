@@ -1,0 +1,5 @@
+// APIKeys.xcconfig — このファイルをコピーして APIKeys.xcconfig を作り、実際のキーを入力する
+// ⚠️ APIKeys.xcconfig は .gitignore に追加して絶対にコミットしない
+
+HOTPEPPER_API_KEY = your_hotpepper_api_key_here
+CLAUDE_API_KEY = your_claude_api_key_here
