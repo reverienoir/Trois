@@ -1,0 +1,116 @@
+/* ── HomeView ── */
+"今のあなたに合う3軒を、AIが選びます" = "AI picks 3 restaurants just for you";
+"今日のお店、\n" = "Tonight's restaurant,\n";
+"迷わなくていい。" = "decided.";
+"条件はざっくりでOK。気になるところだけ選んで。あとはわたしが3軒に絞ります。" = "Rough is fine. Pick what matters to you — I'll narrow it down to 3.";
+"場所" = "Location";
+"現在地" = "Current Location";
+"地名で指定" = "Enter Area";
+"例：渋谷、神保町、新横浜…" = "e.g. Shibuya, Shinjuku…";
+"設定を開く" = "Open Settings";
+"徒歩何分以内？" = "Walking distance?";
+"〜%lld分" = "~%lld min";
+"予算" = "Budget";
+"今の気分は？" = "How are you feeling?";
+"複数選択OK" = "Multiple OK";
+"ひとことあれば" = "Anything to add?";
+"任意" = "Optional";
+"さっぱりしたものが食べたい" = "Something light sounds good";
+"こだわりで絞り込む" = "Filter by preference";
+"シーン・ジャンル（任意）" = "Scene & genre (optional)";
+"%lld件選択中" = "%lld selected";
+"シーン" = "Scene";
+"ジャンルで絞る" = "Filter by genre";
+"複数OK" = "Multiple OK";
+"今月あと%lld回" = "%lld uses left this month";
+"今月の上限に達しました" = "Monthly limit reached";
+"3軒を提案してもらう" = "Find my 3 restaurants";
+"エラー" = "Error";
+"OK" = "OK";
+
+/* ── ResultView ── */
+"あなたにおすすめの%lld軒" = "%lld picks for you";
+"ごめんね、近くで条件に合うお店が%lld軒しか見つからなかった。条件を少しゆるめてもらえると、もっと提案できるかも。" = "Sorry, only %lld place(s) matched nearby. Try relaxing your filters for more options.";
+"Powered by ホットペッパー Webサービス" = "Powered by ホットペッパー Webサービス";
+"あなたにおすすめの理由" = "Why we picked this";
+"地図で見る" = "View on Map";
+"お店の詳細" = "Details";
+"条件を変えてもう一度" = "Try different conditions";
+"徒歩%lld分" = "%lld min walk";
+
+/* ── PaywallView ── */
+"今月の提案回数を\n使いきりました" = "You've used all your\nsuggestions this month";
+"毎月たくさん使うなら" = "For heavy monthly use";
+"月額サブスク" = "Monthly Subscription";
+"150回 / 月 ・ ¥3.3/回" = "150 uses / mo ・ ¥3.3/use";
+"¥500 / 月" = "¥500 / mo";
+"%lld回追加" = "+%lld uses";
+"¥%lld" = "¥%lld";
+"¥%@/回" = "¥%@/use";
+"1回あたり半額" = "Half the per-use cost";
+"5回だけ無料で復活させる（月1回限り）" = "Get 5 free uses (once per month)";
+"Apple の課金規約が適用されます。\nサブスクはいつでもキャンセルできます。" = "Apple's payment terms apply.\nSubscriptions can be cancelled anytime.";
+
+/* ── OnboardingView ── */
+"はじめる" = "Get Started";
+"現在地を許可して使いはじめる" = "Allow Location & Start";
+"地名で指定するので許可しない" = "I'll enter areas manually";
+"AIが3軒だけ決めてくれる" = "AI picks just 3 for you";
+"候補を並べるのではなく、今のあなたに合う3軒をAIが厳選して提案します。" = "Instead of listing options, AI handpicks 3 restaurants that suit you right now.";
+"理由つきで提案" = "With reasons why";
+"「なぜこの店か」を一言添えるから、はじめてのお店でも安心して行けます。" = "Each pick comes with an explanation, so you can step into any restaurant with confidence.";
+"選ぶのは気分だけ" = "Just pick your mood";
+"細かい検索は不要。気分・予算をざっくり選べばOK。あとはおまかせ。" = "No detailed search needed. Choose your mood and budget roughly — leave the rest to us.";
+"現在地を使わせてください" = "Allow Location Access";
+"近くのお店を探すために、\n現在地の情報を使います。" = "We use your location\nto find nearby restaurants.";
+"位置情報はお店の検索にのみ使用します" = "Used only to search nearby restaurants";
+"サーバーへの保存・第三者への提供はありません" = "Never stored or shared with third parties";
+"許可はiOSの設定からいつでも変更できます" = "Change permission anytime in Settings";
+
+/* ── LoadingView ── */
+"近くのお店を探しています…" = "Searching nearby restaurants…";
+"候補を集めています…" = "Gathering candidates…";
+"3軒に絞っています…" = "Narrowing down to 3…";
+"推薦理由を考えています…" = "Crafting your recommendations…";
+
+/* ── LocationManager ── */
+"位置情報を確認中…" = "Checking location…";
+"位置情報の許可が必要です" = "Location permission required";
+"現在地を取得しました" = "Location acquired";
+"現在地を取得中…" = "Getting your location…";
+
+/* ── Enums: BudgetRange ── */
+"〜1000円" = "Under ¥1,000";
+"〜2000円" = "Under ¥2,000";
+"〜3000円" = "Under ¥3,000";
+"上限なし" = "No Limit";
+
+/* ── Enums: Mood ── */
+"疲れてる" = "Tired";
+"元気を出したい" = "Need Energy";
+"健康的に" = "Healthy";
+"がっつり" = "Hearty";
+"あっさり" = "Light";
+"贅沢したい" = "Treat Myself";
+"冒険したい" = "Adventurous";
+"失敗したくない" = "Play It Safe";
+
+/* ── Enums: DiningScene ── */
+"一人で" = "Solo";
+"同僚と" = "With Colleagues";
+"デート" = "Date Night";
+"家族と" = "With Family";
+
+/* ── FastFood notice ── */
+"マクドナルド・吉野家・コンビニなどのチェーン店も含めて探します。写真や予算情報は表示されない場合があります。" = "Includes chains like McDonald's, Yoshinoya & convenience stores. Photos and price info may not be available.";
+
+/* ── Enums: Genre ── */
+"ラーメン" = "Ramen";
+"焼肉" = "Yakiniku";
+"カレー" = "Curry";
+"そば・うどん" = "Soba / Udon";
+"居酒屋" = "Izakaya";
+"ファストフード" = "Fast Food";
+"和食" = "Japanese";
+"中華" = "Chinese";
+"カフェ" = "Café";

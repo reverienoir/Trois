@@ -1,5 +1,6 @@
 import Foundation
 import CoreLocation
+import SwiftUI
 
 struct Coordinate {
     let latitude: Double
@@ -17,6 +18,7 @@ enum BudgetRange: String, CaseIterable, Identifiable {
     case noLimit = "上限なし"
 
     var id: String { rawValue }
+    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 
     // ホットペッパー budget コード
     var hotpepperCode: String? {
@@ -40,6 +42,7 @@ enum Mood: String, CaseIterable, Identifiable {
     case playItSafe = "失敗したくない"
 
     var id: String { rawValue }
+    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
 
 enum DiningScene: String, CaseIterable, Identifiable {
@@ -49,6 +52,7 @@ enum DiningScene: String, CaseIterable, Identifiable {
     case family = "家族と"
 
     var id: String { rawValue }
+    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
 
 enum Genre: String, CaseIterable, Identifiable {
@@ -63,6 +67,7 @@ enum Genre: String, CaseIterable, Identifiable {
     case cafe = "カフェ"
 
     var id: String { rawValue }
+    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 
     // ホットペッパー genre コード
     var hotpepperCode: String? {

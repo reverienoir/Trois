@@ -26,10 +26,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     var statusText: String {
         switch status {
-        case .notDetermined: return "位置情報を確認中…"
-        case .denied, .restricted: return "位置情報の許可が必要です"
+        case .notDetermined: return String(localized: "位置情報を確認中…")
+        case .denied, .restricted: return String(localized: "位置情報の許可が必要です")
         case .authorizedWhenInUse, .authorizedAlways:
-            return coordinate != nil ? "現在地を取得しました" : "現在地を取得中…"
+            return coordinate != nil
+                ? String(localized: "現在地を取得しました")
+                : String(localized: "現在地を取得中…")
         @unknown default: return ""
         }
     }

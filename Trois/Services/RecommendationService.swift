@@ -13,9 +13,14 @@ struct RecommendationService {
     }
 
     func recommend(query: UserQuery) async throws -> RecommendationResult {
-        // 1. ホットペッパーで候補取得
-        let hotpepper = HotpepperService(apiKey: hotpepperKey)
-        let candidates = try await hotpepper.fetchRestaurants(query: query)
+        // 1. 候補取得（ファストフード選択時はMapKit、それ以外はホットペッパー）
+        let candidates: [Restaurant]
+        if query.genres.contains(.fastFood) {
+            candidates = try await MapKitService().fetchFastFood(query: query)
+        } else {
+            let hotpepper = HotpepperService(apiKey: hotpepperKey)
+            candidates = try await hotpepper.fetchRestaurants(query: query)
+        }
         guard !candidates.isEmpty else { throw APIError.noResults }
 
         // 2. 周辺の天気情報を取得（取れなくても続行）

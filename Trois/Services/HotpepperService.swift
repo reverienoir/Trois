@@ -14,7 +14,7 @@ struct HotpepperService {
             URLQueryItem(name: "lat", value: String(query.location.latitude)),
             URLQueryItem(name: "lng", value: String(query.location.longitude)),
             URLQueryItem(name: "range", value: String(query.hotpepperRange)),
-            URLQueryItem(name: "count", value: "30"),
+            URLQueryItem(name: "count", value: "10"),
             URLQueryItem(name: "format", value: "json"),
         ]
 
@@ -31,8 +31,11 @@ struct HotpepperService {
         guard let url = components.url else { throw APIError.invalidURL }
 
         let (data, response) = try await URLSession.shared.data(from: url)
-        guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
-            throw APIError.httpError
+        guard let http = response as? HTTPURLResponse else {
+            throw APIError.httpError(statusCode: 0)
+        }
+        guard http.statusCode == 200 else {
+            throw APIError.httpError(statusCode: http.statusCode)
         }
 
         let decoded = try JSONDecoder().decode(HotpepperResponse.self, from: data)
@@ -107,14 +110,17 @@ private struct HotpepperResponse: Decodable {
 
 enum APIError: LocalizedError {
     case invalidURL
-    case httpError
+    case httpError(statusCode: Int)
     case noResults
     case geocodingFailed
 
     var errorDescription: String? {
         switch self {
         case .invalidURL: return "URLの生成に失敗しました"
-        case .httpError: return "サーバーエラーが発生しました"
+        case .httpError(let code) where code == 503:
+            return "ただいまお店情報サービスがメンテナンス中です。しばらく時間をおいてお試しください。"
+        case .httpError:
+            return "お店情報の取得に失敗しました。時間をおいてお試しください。"
         case .noResults: return "条件に合うお店が見つかりませんでした"
         case .geocodingFailed: return "入力された地名から場所を特定できませんでした"
         }

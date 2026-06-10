@@ -11,7 +11,7 @@ struct ClaudeService {
     func selectThree(from restaurants: [Restaurant], query: UserQuery, weather: WeatherInfo?) async throws -> (summary: String, picks: [Recommendation]) {
         guard !restaurants.isEmpty else { throw APIError.noResults }
 
-        let restaurantList = restaurants.prefix(20).enumerated().map { i, r in
+        let restaurantList = restaurants.prefix(10).enumerated().map { i, r in
             """
             \(i + 1). id=\(r.id) 店名=\(r.name) ジャンル=\(r.genreName) 予算=\(r.budgetLabel) 徒歩約\(max(1, r.distanceMeters / 80))分
             """
@@ -53,6 +53,7 @@ struct ClaudeService {
         - 推薦理由・summaryともに「近いから」「安いから」「予算内だから」のような距離・価格を主理由にしない（条件を満たすのは前提なので、それ自体は理由にならない）
         - 代わりに、気温・天気・季節・曜日（週の真ん中だから精をつけよう、金曜だから贅沢しよう、寒いから温かい物が食べたくなる、など）といった「いまこの瞬間にこの店を選ぶ気分的な必然性」を、多少こじつけでも自然な物語として理由づけに使う
         - 各店の特徴（ジャンル・雰囲気など）と、状況（気温・天気・曜日）を組み合わせて、説得力のある"その気にさせる"理由を作る
+        - コンビニが候補に含まれる場合、イートインや軽食として自然に提案してよい（「手軽に済ませたい」「時間がない」などの気分に合う場合に選ぶ）
         """
 
         let body: [String: Any] = [
@@ -72,11 +73,11 @@ struct ClaudeService {
 
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
-            throw APIError.httpError
+            throw APIError.httpError(statusCode: 0)
         }
 
         let decoded = try JSONDecoder().decode(ClaudeResponse.self, from: data)
-        guard let text = decoded.content.first?.text else { throw APIError.httpError }
+        guard let text = decoded.content.first?.text else { throw APIError.httpError(statusCode: 0) }
 
         return try parseRecommendations(json: text, restaurants: restaurants)
     }
@@ -112,10 +113,10 @@ struct ClaudeService {
         let trimmed = json.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let start = trimmed.firstIndex(of: "{"),
               let end = trimmed.lastIndex(of: "}") else {
-            throw APIError.httpError
+            throw APIError.httpError(statusCode: 0)
         }
         let jsonString = String(trimmed[start...end])
-        guard let data = jsonString.data(using: .utf8) else { throw APIError.httpError }
+        guard let data = jsonString.data(using: .utf8) else { throw APIError.httpError(statusCode: 0) }
 
         let parsed = try JSONDecoder().decode(ParsedResponse.self, from: data)
         let restaurantMap = Dictionary(uniqueKeysWithValues: restaurants.map { ($0.id, $0) })

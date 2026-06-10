@@ -1,0 +1,2 @@
+NSLocationWhenInUseUsageDescription = "近くの飲食店を提案するために現在地を使用します";
+NSLocationAlwaysAndWhenInUseUsageDescription = "近くの飲食店を提案するために現在地を使用します";

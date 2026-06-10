@@ -1,17 +1,27 @@
 import SwiftUI
 
-// チップ形状の Toggle スタイル
+// チップ形状の Toggle スタイル（"しずか" / アウトライン仕様）
 struct ChipToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.subheadline)
-            .padding(.horizontal, 14)
-            .padding(.vertical, 8)
+            .font(Trois.body(13.5, weight: .medium))
+            .foregroundStyle(configuration.isOn ? Trois.accentDeep : Trois.inkSoft)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 11)
+            .frame(minHeight: 44)
             .background(
-                configuration.isOn ? Color.accentColor : Color(.systemGray5),
+                configuration.isOn ? Trois.accentTint : Trois.surface,
                 in: Capsule()
             )
-            .foregroundStyle(configuration.isOn ? .white : .primary)
+            .overlay(
+                Capsule().strokeBorder(
+                    configuration.isOn ? Trois.accent : Trois.line,
+                    lineWidth: 1.5
+                )
+            )
+            .scaleEffect(configuration.isOn ? 0.97 : 1)
+            .animation(.spring(response: 0.3, dampingFraction: 0.6), value: configuration.isOn)
+            .contentShape(Capsule())
             .onTapGesture { configuration.isOn.toggle() }
     }
 }

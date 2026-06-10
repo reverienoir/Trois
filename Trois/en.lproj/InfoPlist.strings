@@ -1,0 +1,2 @@
+NSLocationWhenInUseUsageDescription = "Used to find restaurants near you";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Used to find restaurants near you";

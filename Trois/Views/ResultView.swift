@@ -4,150 +4,219 @@ struct ResultView: View {
     let result: RecommendationResult
     @Environment(\.dismiss) private var dismiss
 
+    private let roleOrder: [Role] = [.honmei, .anaba, .bunan]
+
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                if result.picks.count < 3 {
-                    HStack(alignment: .top, spacing: 8) {
-                        Image(systemName: "exclamationmark.triangle")
-                            .foregroundStyle(.orange)
-                        Text("ごめんなさい、近くで条件に合うお店が\(result.picks.count)軒しか見つかりませんでした。3軒そろえられず申し訳ありません🙏")
-                            .font(.subheadline)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    .padding(14)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
-                }
+        ZStack {
+            Trois.cream.ignoresSafeArea()
 
-                if !result.summary.isEmpty {
-                    HStack(alignment: .top, spacing: 8) {
-                        Image(systemName: "sparkles")
-                            .foregroundStyle(Color.accentColor)
+            ScrollView {
+                VStack(alignment: .leading, spacing: Trois.cardGap) {
+                    // kicker
+                    HStack(spacing: 5) {
+                        ForEach(roleOrder, id: \.self) { role in
+                            Circle().fill(role.color).frame(width: 6, height: 6)
+                        }
+                        Text("あなたにおすすめの\(result.picks.count)軒")
+                            .font(Trois.body(12.5, weight: .medium))
+                            .tracking(0.4)
+                            .foregroundStyle(Trois.accentDeep)
+                    }
+
+                    // サマリー
+                    if !result.summary.isEmpty {
                         Text(result.summary)
-                            .font(.subheadline)
-                            .fixedSize(horizontal: false, vertical: true)
+                            .font(Trois.display(18, weight: .medium))
+                            .foregroundStyle(Trois.ink)
+                            .lineSpacing(10)
+                            .tracking(0.3)
                     }
-                    .padding(14)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color.accentColor.opacity(0.1), in: RoundedRectangle(cornerRadius: 12))
-                }
 
-                ForEach(result.picks) { pick in
-                    RestaurantCard(recommendation: pick)
-                }
+                    // お詫びバナー
+                    if result.picks.count < 3 {
+                        HStack(alignment: .top, spacing: 10) {
+                            Image(systemName: "leaf")
+                                .foregroundStyle(Trois.ochreDeep)
+                            Text("ごめんね、近くで条件に合うお店が\(result.picks.count)軒しか見つからなかった。条件を少しゆるめてもらえると、もっと提案できるかも。")
+                                .font(Trois.body(13.5))
+                                .foregroundStyle(Trois.ink)
+                                .lineSpacing(5)
+                        }
+                        .padding(15)
+                        .background(Trois.ochreTint, in: RoundedRectangle(cornerRadius: Trois.rReason))
+                    }
 
-                // ホットペッパー クレジット表記（利用規約必須）
-                Text("Powered by ホットペッパー Webサービス")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.top, 8)
+                    ForEach(Array(result.picks.enumerated()), id: \.element.id) { index, pick in
+                        RestaurantCard(recommendation: pick, role: roleOrder[safe: index] ?? .bunan)
+                    }
+
+                    // クレジット表記（変更不可）
+                    Text("Powered by ホットペッパー Webサービス")
+                        .font(Trois.body(11))
+                        .foregroundStyle(Trois.inkFaint)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top, 6)
+
+                    // リトライ
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("条件を変えてもう一度")
+                            .font(Trois.body(14.5, weight: .medium))
+                            .foregroundStyle(Trois.accentDeep)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 14)
+                    }
+                    .background(
+                        Capsule().strokeBorder(Trois.accent, lineWidth: 1.5)
+                    )
+                    .padding(.bottom, 12)
+                }
+                .padding(.horizontal, Trois.screenPadding)
+                .padding(.top, 24)
+                .padding(.bottom, 16)
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 16)
         }
-        .navigationTitle(result.picks.count == 3 ? "おすすめ3軒" : "おすすめ\(result.picks.count)軒")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                Button {
-                    dismiss()
-                } label: {
-                    Label("条件を変えてもう一度", systemImage: "arrow.counterclockwise")
-                }
-            }
-        }
+        .toolbarBackground(Trois.cream, for: .navigationBar)
+    }
+}
+
+private extension Array {
+    subscript(safe index: Int) -> Element? {
+        indices.contains(index) ? self[index] : nil
     }
 }
 
 struct RestaurantCard: View {
     let recommendation: Recommendation
+    let role: Role
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            // 店舗画像
-            if let url = recommendation.restaurant.imageURL {
-                AsyncImage(url: url) { image in
-                    image.resizable().aspectRatio(contentMode: .fill)
-                } placeholder: {
-                    Rectangle().fill(.quaternary)
+        HStack(spacing: 0) {
+            // カラーレール
+            Rectangle()
+                .fill(role.color)
+                .frame(width: 4)
+
+            VStack(alignment: .leading, spacing: 0) {
+                // 写真（フルワイド・上）
+                Group {
+                    if let url = recommendation.restaurant.imageURL {
+                        AsyncImage(url: url) { phase in
+                            switch phase {
+                            case .success(let image):
+                                image.resizable().aspectRatio(contentMode: .fill)
+                            default:
+                                placeholderImage
+                            }
+                        }
+                    } else {
+                        placeholderImage
+                    }
                 }
-                .frame(height: 160)
+                .frame(height: 172)
+                .frame(maxWidth: .infinity)
                 .clipped()
-            }
 
-            VStack(alignment: .leading, spacing: 10) {
-                // ロール バッジ
-                if let role = recommendation.role {
-                    Text(role.rawValue)
-                        .font(.caption)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 3)
-                        .background(Color.accentColor, in: Capsule())
-                }
+                VStack(alignment: .leading, spacing: 12) {
+                    // 店名
+                    Text(recommendation.restaurant.name)
+                        .font(Trois.display(20, weight: .bold))
+                        .foregroundStyle(Trois.ink)
 
-                // 店名
-                Text(recommendation.restaurant.name)
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    // メタ情報
+                    HStack(spacing: 6) {
+                        Text(recommendation.restaurant.genreName)
+                        Text("・").foregroundStyle(Trois.inkFaint)
+                        Text(recommendation.restaurant.budgetLabel)
+                        Text("・").foregroundStyle(Trois.inkFaint)
+                        Text("徒歩\(walkMinutes)分")
+                    }
+                    .font(Trois.body(12.5))
+                    .foregroundStyle(Trois.inkSoft)
 
-                // メタ情報
-                HStack(spacing: 12) {
-                    Label(recommendation.restaurant.genreName, systemImage: "fork.knife")
-                    Label(recommendation.restaurant.budgetLabel, systemImage: "yensign")
-                    Label(walkText, systemImage: "figure.walk")
-                }
-                .font(.caption)
-                .foregroundStyle(.secondary)
+                    // 理由ボックス
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack(spacing: 6) {
+                            Text("AI")
+                                .font(.system(size: 9, weight: .bold))
+                                .foregroundStyle(.white)
+                                .frame(width: 18, height: 18)
+                                .background(role.color, in: Circle())
+                            Text("あなたにおすすめの理由")
+                                .font(Trois.body(11.5, weight: .medium))
+                                .foregroundStyle(role.deep)
+                        }
+                        Text(recommendation.reason)
+                            .font(Trois.body(13.5))
+                            .foregroundStyle(Trois.ink)
+                            .lineSpacing(7)
+                    }
+                    .padding(13)
+                    .padding(.horizontal, 2)
+                    .background(role.tint, in: RoundedRectangle(cornerRadius: Trois.rReason))
 
-                Divider()
-
-                // AI 推薦理由
-                HStack(alignment: .top, spacing: 8) {
-                    Image(systemName: "sparkles")
-                        .foregroundStyle(Color.accentColor)
-                        .font(.subheadline)
-                    Text(recommendation.reason)
-                        .font(.subheadline)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-
-                // アクション
-                HStack(spacing: 10) {
-                    if let mapURL = mapURL {
-                        Link(destination: mapURL) {
-                            Label("地図で見る", systemImage: "map")
-                                .font(.subheadline)
+                    // アクション
+                    HStack(spacing: 10) {
+                        if let mapURL = mapURL {
+                            Link(destination: mapURL) {
+                                Label("地図で見る", systemImage: "location")
+                                    .font(Trois.body(13.5, weight: .medium))
+                                    .foregroundStyle(Trois.ink)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 11)
+                                    .background(Trois.surface, in: RoundedRectangle(cornerRadius: Trois.rActionButton))
+                                    .overlay(RoundedRectangle(cornerRadius: Trois.rActionButton).strokeBorder(Trois.lineStrong, lineWidth: 1))
+                            }
+                        }
+                        if let detailURL = googleSearchURL {
+                            Link(destination: detailURL) {
+                                HStack(spacing: 4) {
+                                    Text("お店の詳細")
+                                    Image(systemName: "arrow.right")
+                                }
+                                .font(Trois.body(13.5, weight: .medium))
+                                .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity)
-                                .padding(.vertical, 8)
-                                .background(.quaternary, in: RoundedRectangle(cornerRadius: 8))
+                                .padding(.vertical, 11)
+                                .background(role.color, in: RoundedRectangle(cornerRadius: Trois.rActionButton))
+                            }
                         }
                     }
-                    if let detailURL = googleSearchURL {
-                        Link(destination: detailURL) {
-                            Label("お店の詳細", systemImage: "arrow.up.right.square")
-                                .font(.subheadline)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 8)
-                                .background(.quaternary, in: RoundedRectangle(cornerRadius: 8))
-                        }
-                    }
+                    .padding(.top, 2)
                 }
-                .foregroundStyle(.primary)
+                .padding(16)
             }
-            .padding(16)
         }
-        .background(.background)
-        .clipShape(RoundedRectangle(cornerRadius: 14))
-        .shadow(color: .black.opacity(0.08), radius: 8, y: 2)
+        .background(Trois.surface)
+        .clipShape(RoundedRectangle(cornerRadius: Trois.rCard))
+        .overlay(RoundedRectangle(cornerRadius: Trois.rCard).strokeBorder(Trois.line, lineWidth: 1))
+        .shadow(color: Trois.ink.opacity(0.03), radius: 2, y: 1)
+        .shadow(color: Trois.ink.opacity(0.05), radius: 34, y: 14)
     }
 
-    private var walkText: String {
-        let minutes = max(1, recommendation.restaurant.distanceMeters / 80)
-        return "徒歩約\(minutes)分"
+    private var placeholderImage: some View {
+        Trois.surfaceSink
+            .overlay(
+                GeometryReader { geo in
+                    Path { path in
+                        let spacing: CGFloat = 18
+                        var x: CGFloat = -geo.size.height
+                        while x < geo.size.width {
+                            path.move(to: CGPoint(x: x, y: geo.size.height))
+                            path.addLine(to: CGPoint(x: x + geo.size.height, y: 0))
+                            x += spacing
+                        }
+                    }
+                    .stroke(Trois.line, lineWidth: 1)
+                }
+                .clipped()
+            )
+    }
+
+    private var walkMinutes: Int {
+        max(1, recommendation.restaurant.distanceMeters / 80)
     }
 
     private var mapURL: URL? {

@@ -44,7 +44,7 @@ struct GeocodingService {
 
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
-            throw APIError.httpError
+            throw APIError.httpError(statusCode: (response as? HTTPURLResponse)?.statusCode ?? 0)
         }
 
         let decoded = try JSONDecoder().decode(OpenMeteoGeocodingResponse.self, from: data)
